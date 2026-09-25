@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev' version '2.0.77'
+}
+
+version = '1.0.0'
+group   = 'net.xavier.neomagiccircles'
+
+base {
+    archivesName = 'neo_magic_circles'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+neoForge {
+    version = '21.1.233'
+
+    parchment {
+    }
+
+    runs {
+        client {
+            client()
+        }
+        server {
+            server()
+        }
+    }
+
+    mods {
+        neo_magic_circles {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+dependencies {
+    // Iron's Spellbooks 1.21.1 — required; provides the SpellRegistry/ClientMagicData/
+    // AbstractSpell API the circle-render trigger polls every client tick.
+    compileOnly files(
+        'C:/Users/Xavier/curseforge/minecraft/Instances/The Warborn Realms SMP/mods/irons_spellbooks-1.21.1-3.16.3.jar'
+    )
+
+    // Iris — optional soft dependency for shader-pack detection (OculusCompact),
+    // guarded at runtime by ModList.isLoaded("iris"); only needed here to compile.
+    compileOnly files(
+        'C:/Users/Xavier/curseforge/minecraft/Instances/The Warborn Realms SMP/mods/iris-neoforge-1.8.14-beta.1+mc1.21.1.jar'
+    )
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'     : 'neo-magic-circles',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.jar.archiveVersion,
+            'Implementation-Vendor'   : 'Xmat5'
+        ])
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
