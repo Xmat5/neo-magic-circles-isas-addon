@@ -49,7 +49,7 @@ public class MagicCircleFactory {
         AbstractSpell spell = castInfo.spell();
         ResourceLocation usedTexture;
 
-        if (CircleSettings.CIRCLES_STYLE == CirclesStyle.NEON) {
+        if (CircleSettings.getCircleStyle() == CirclesStyle.NEON) {
             usedTexture = TEXTURES_NEON_PER_SIZE[circleType];
         } else {
             usedTexture = TEXTURES_PER_SIZE[circleType];
@@ -66,9 +66,9 @@ public class MagicCircleFactory {
 
         if (circleType > 2) {
             if (caster instanceof LocalPlayer) {
-                yOffset = CircleSettings.Y_OFFSET_FROM_PLAYER_BOTTOM;
+                yOffset = CircleSettings.yOffsetFromPlayerBottom();
             } else {
-                yOffset = CircleSettings.Y_OFFSET_FROM_ENTITY_BOTTOM;
+                yOffset = CircleSettings.yOffsetFromEntityBottom();
             }
 
             xOffset = 0;
@@ -99,13 +99,13 @@ public class MagicCircleFactory {
             animationManager.addFinalDataTransformation(DataTransformAnimations.getGradualOpacityChangeExecutable(0.35f, UNDER_PLAYER_FADE_OUT_TICKS));
         } else {
             if (caster instanceof LocalPlayer) {
-                zOffset = CircleSettings.Z_OFFSET_FROM_CROSS;
-                xOffset = CircleSettings.X_OFFSET_FROM_CROSS;
-                yOffset = CircleSettings.Y_OFFSET_FROM_CROSS;
+                zOffset = CircleSettings.zOffsetFromCross();
+                xOffset = CircleSettings.xOffsetFromCross();
+                yOffset = CircleSettings.yOffsetFromCross();
             } else {
-                zOffset = CircleSettings.Z_OFFSET_FROM_VIEW;
-                xOffset = CircleSettings.X_OFFSET_FROM_VIEW;
-                yOffset = CircleSettings.Y_OFFSET_FROM_VIEW;
+                zOffset = CircleSettings.zOffsetFromView();
+                xOffset = CircleSettings.xOffsetFromView();
+                yOffset = CircleSettings.yOffsetFromView();
             }
 
             usedFadeInTicks = HAND_CIRCLE_FADE_IN_TICKS;

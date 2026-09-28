@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import java.text.MessageFormat;
 
 public class ModLogger {
-    private static final Logger LOGGER = LogManager.getLogger("warborn_spell_core");
+    private static final Logger LOGGER = LogManager.getLogger("neomagiccircles");
 
     public static void info(String message, Object... args) {
         LOGGER.info(buildMessageLog(message), args);

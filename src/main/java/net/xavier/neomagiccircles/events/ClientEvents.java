@@ -7,6 +7,7 @@ import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
 import net.xavier.neomagiccircles.MagicCircleManager;
+import net.xavier.neomagiccircles.config.ConfigCache;
 import net.xavier.neomagiccircles.oculus.OculusCompact;
 import net.xavier.neomagiccircles.render.MagicCirclesRender;
 
@@ -17,9 +18,14 @@ public class ClientEvents {
         }
     }
 
+    public static void onClientLogin(ClientPlayerNetworkEvent.LoggingIn event) {
+        ConfigCache.invalidateCache();
+    }
+
     public static void onClientLogout(ClientPlayerNetworkEvent.LoggingOut event) {
         MagicCircleManager.handleClientLeaving();
         MagicCirclesRender.clearCache();
+        ConfigCache.invalidateCache();
     }
 
     public static void onClientTick(ClientTickEvent.Post event) {

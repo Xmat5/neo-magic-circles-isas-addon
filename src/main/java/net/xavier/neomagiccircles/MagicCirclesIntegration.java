@@ -18,6 +18,7 @@ public final class MagicCirclesIntegration {
             modBus.addListener(ModEvents::onRegisterRenderers);
 
             NeoForge.EVENT_BUS.addListener(ClientEvents::onEntityLeaveLevel);
+            NeoForge.EVENT_BUS.addListener(ClientEvents::onClientLogin);
             NeoForge.EVENT_BUS.addListener(ClientEvents::onClientLogout);
             NeoForge.EVENT_BUS.addListener(ClientEvents::onClientTick);
             NeoForge.EVENT_BUS.addListener(ClientEvents::onEntityLeavingLevel);
