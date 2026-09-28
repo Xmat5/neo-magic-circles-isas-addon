@@ -153,7 +153,7 @@ public class MagicCirclesRender extends RenderType {
                                   PoseStack poseStack,
                                   MultiBufferSource bufferSource,
                                   boolean toUseAlwaysGlowingNormal) {
-        float[] color = magicCircleData.getColor(true);
+        float[] color = magicCircleData.getColor(!toUseAlwaysGlowingNormal);
 
         Vector3f usedNormal;
         if (toUseAlwaysGlowingNormal)
