@@ -19,13 +19,10 @@ public class RendererUtils {
                                 Vector3f usedNormal) {
         Matrix4f matrix = ps.last().pose();
         float size = 0.5f;
-        int blockLight = LightTexture.block(LightTexture.FULL_BRIGHT);
-        int skyLight = LightTexture.sky(LightTexture.FULL_BRIGHT);
-
-        builder.addVertex(matrix, -size, -size, 0).setColor(r, g, b, alpha).setUv(0, 0).setOverlay(OverlayTexture.NO_OVERLAY).setUv2(blockLight, skyLight).setNormal(ps.last(), usedNormal.x(), usedNormal.y(), usedNormal.z());
-        builder.addVertex(matrix, -size,  size, 0).setColor(r, g, b, alpha).setUv(0, 1).setOverlay(OverlayTexture.NO_OVERLAY).setUv2(blockLight, skyLight).setNormal(ps.last(), usedNormal.x(), usedNormal.y(), usedNormal.z());
-        builder.addVertex(matrix,  size,  size, 0).setColor(r, g, b, alpha).setUv(1, 1).setOverlay(OverlayTexture.NO_OVERLAY).setUv2(blockLight, skyLight).setNormal(ps.last(), usedNormal.x(), usedNormal.y(), usedNormal.z());
-        builder.addVertex(matrix,  size, -size, 0).setColor(r, g, b, alpha).setUv(1, 0).setOverlay(OverlayTexture.NO_OVERLAY).setUv2(blockLight, skyLight).setNormal(ps.last(), usedNormal.x(), usedNormal.y(), usedNormal.z());
+        builder.addVertex(matrix, -size, -size, 0).setColor(r, g, b, alpha).setUv(0, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(ps.last(), usedNormal.x(), usedNormal.y(), usedNormal.z());
+        builder.addVertex(matrix, -size,  size, 0).setColor(r, g, b, alpha).setUv(0, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(ps.last(), usedNormal.x(), usedNormal.y(), usedNormal.z());
+        builder.addVertex(matrix,  size,  size, 0).setColor(r, g, b, alpha).setUv(1, 1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(ps.last(), usedNormal.x(), usedNormal.y(), usedNormal.z());
+        builder.addVertex(matrix,  size, -size, 0).setColor(r, g, b, alpha).setUv(1, 0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(ps.last(), usedNormal.x(), usedNormal.y(), usedNormal.z());
     }
 
     /**
